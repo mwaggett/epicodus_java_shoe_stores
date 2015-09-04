@@ -57,10 +57,39 @@ public class Store {
         .addParameter("id", id)
         .executeUpdate();
 
-      // String joinDelete = "DELETE FROM stores_brands WHERE store_id = :id;";
-      // con.createQuery(joinDelete)
-      //   .addParameter("id", id)
-      //   .executeUpdate();
+      String joinDelete = "DELETE FROM stores_brands WHERE store_id = :id;";
+      con.createQuery(joinDelete)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  public void addBrand(Brand brand) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO stores_brands (store_id, brand_id) VALUES (:store_id, :brand_id);";
+      con.createQuery(sql)
+        .addParameter("store_id", id)
+        .addParameter("brand_id", brand.getId())
+        .executeUpdate();
+    }
+  }
+
+  public void removeBrand(Brand brand) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stores_brands WHERE store_id = :store_id AND brand_id = :brand_id;";
+      con.createQuery(sql)
+        .addParameter("store_id", id)
+        .addParameter("brand_id", brand.getId())
+        .executeUpdate();
+    }
+  }
+
+  public List<Brand> getBrands() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT brands.* FROM stores JOIN stores_brands ON (stores.id = stores_brands.store_id) JOIN brands ON (stores_brands.brand_id = brands.id) WHERE stores.id = :id;";
+      return con.createQuery(sql)
+          .addParameter("id", id)
+          .executeAndFetch(Brand.class);
     }
   }
 

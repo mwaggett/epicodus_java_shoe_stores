@@ -55,11 +55,43 @@ public class StoreTest {
   }
 
   @Test
-  public void delete_removesFromStoreDatabase() {
+  public void delete_removesFromStoreTable() {
     Store myStore = new Store("DSW");
     myStore.save();
     myStore.delete();
     assertEquals(0, Store.all().size());
+  }
+
+  @Test
+  public void getBrands_returnsAddedBrands() {
+    Store myStore = new Store("DSW");
+    myStore.save();
+    Brand myBrand = new Brand("Converse");
+    myBrand.save();
+    myStore.addBrand(myBrand);
+    assertTrue(myStore.getBrands().contains(myBrand));
+  }
+
+  @Test
+  public void removeBrands_removesAddedBrands() {
+    Store myStore = new Store("DSW");
+    myStore.save();
+    Brand myBrand = new Brand("Converse");
+    myBrand.save();
+    myStore.addBrand(myBrand);
+    myStore.removeBrand(myBrand);
+    assertEquals(0, myStore.getBrands().size());
+  }
+
+  @Test
+  public void delete_removesFromJoinTable() {
+    Store myStore = new Store("DSW");
+    myStore.save();
+    Brand myBrand = new Brand("Converse");
+    myBrand.save();
+    myStore.addBrand(myBrand);
+    myStore.delete();
+    assertEquals(0, myBrand.getStores().size());
   }
 
   @Test
