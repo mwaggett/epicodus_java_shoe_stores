@@ -23,7 +23,32 @@
           </li>
         </form>
       </ul>
-      <p><a href="/stores/$store.getId()/edit">Edit store</a></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+        <form action="/stores/$store.getId()/update" method="post">
+          <div class="form-group">
+            <label>Edit Store Name:</label>
+            <input type="text" name="name" id="name" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-warning">Update Store</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="well">
+        <form action="/stores/$store.getId()/delete" method="post">
+          <div class="form-group">
+            <label>Delete Store</label>
+            <br>
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 

@@ -36,7 +36,6 @@ public class App {
     }, new VelocityTemplateEngine());
 
     post("/stores/create", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
 
       Store newStore = new Store(request.queryParams("name"));
       newStore.save();
@@ -56,7 +55,6 @@ public class App {
     }, new VelocityTemplateEngine());
 
     post("/stores/:id/add-brand", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
 
       Store store = Store.find(Integer.parseInt(request.params(":id")));
       Brand addedBrand = Brand.find(Integer.parseInt(request.queryParams("brandId")));
@@ -64,6 +62,25 @@ public class App {
 
       String redirectPath = String.format("/stores/%d", store.getId());
       response.redirect(redirectPath);
+      return null;
+    });
+
+    post("/stores/:id/update", (request, response) -> {
+
+      Store store = Store.find(Integer.parseInt(request.params(":id")));
+      store.update(request.queryParams("name"));
+
+      String redirectPath = String.format("/stores/%d", store.getId());
+      response.redirect(redirectPath);
+      return null;
+    });
+
+    post("/stores/:id/delete", (request, response) -> {
+
+      Store store = Store.find(Integer.parseInt(request.params(":id")));
+      store.delete();
+
+      response.redirect("/");
       return null;
     });
 
@@ -75,7 +92,6 @@ public class App {
     }, new VelocityTemplateEngine());
 
     post("/brands/create", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
 
       Brand newBrand = new Brand(request.queryParams("name"));
       newBrand.save();

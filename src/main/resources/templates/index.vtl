@@ -6,27 +6,31 @@
 
   <div class="row">
     <div class="col-md-6">
-      <h3><center>All Stores</center></h3>
-      <ul>
-        #foreach ($store in $stores)
-          <li>
-            <a href="/stores/$store.getId()">$store.getName()</a>
-          </li>
-        #end
-      </ul>
-      <p><a href="/stores/new">Add a new store</a></p>
+      <div class="well">
+        <h3><center>All Stores</center></h3>
+        <ul>
+          #foreach ($store in $stores)
+            <li>
+              <a href="/stores/$store.getId()">$store.getName()</a>
+            </li>
+          #end
+        </ul>
+        <p><a href="/stores/new">Add a new store</a></p>
+      </div>
     </div>
 
     <div class="col-md-6">
-      <h3><center>All Brands</center></h3>
-      <ul>
-        #foreach ($brand in $brands)
-          <li>
-            <a href="/brands/$brand.getId()">$brand.getName()</a>
-          </li>
-        #end
-      </ul>
-      <p><a href="/brands/new">Add a new brand</a></p>
+      <div class="well">
+        <h3><center>All Brands</center></h3>
+        <ul>
+          #foreach ($brand in $brands)
+            <li>
+              <a href="/brands/$brand.getId()">$brand.getName()</a>
+            </li>
+          #end
+        </ul>
+        <p><a href="/brands/new">Add a new brand</a></p>
+      </div>
     </div>
   </div>
 
