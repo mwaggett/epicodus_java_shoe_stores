@@ -1,6 +1,6 @@
 # Shoe Stores
 
-##### _Java Advanced Database Code Review for Epicodus, 4 September 2015_
+##### _Java Advanced Database Code Review for Epicodus, 5 September 2015_
 
 #### By **Molly Waggett**
 
