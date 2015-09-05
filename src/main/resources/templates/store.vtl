@@ -12,7 +12,7 @@
           <li>
             $brand.getName()
             <form action="/stores/$store.getId()/remove-brand/$brand.getId()" method="post">
-              <button type="submit" class="btn btn-danger">Remove Brand</button>
+              <button type="submit" id="remove-$brand.getId()" class="btn btn-danger">Remove Brand</button>
             </form>
           </li>
         #end
@@ -24,7 +24,7 @@
                 <option value="$brand.getId()">$brand.getName()</option>
               #end
             </select>
-            <button type="submit" class="btn btn-info">Add Brand</button>
+            <button type="submit" id="add" class="btn btn-info">Add Brand</button>
           </li>
         </form>
       </ul>
@@ -39,7 +39,7 @@
             <label>Edit Store Name:</label>
             <input type="text" name="name" id="name" class="form-control">
           </div>
-          <button type="submit" class="btn btn-warning">Update Store</button>
+          <button type="submit" id="update" class="btn btn-warning">Update Store</button>
         </form>
       </div>
     </div>
@@ -50,7 +50,7 @@
           <div class="form-group">
             <label>Delete Store</label>
             <br>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" id="delete" class="btn btn-danger">Delete</button>
           </div>
         </form>
       </div>
