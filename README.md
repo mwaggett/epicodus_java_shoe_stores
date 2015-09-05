@@ -1,25 +1,32 @@
-# Application Name
+# Shoe Stores
 
-##### _{Brief description of application}, {Date of current version}_
+##### _Java Advanced Database Code Review for Epicodus, 4 September 2015_
 
 #### By **Molly Waggett**
 
 ## Description
 
-{This is a detailed description of your application. Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. Do you want other developers to use this code in their apps? Talk about things like that here in simple terms.}
+This app allows a user to add shoe stores and brands to a database. The homepage
+displays lists of stores and brands along with links to add new stores and
+brands. Clicking on a store takes the user to a list of the brands that store
+carries. From this page, the user may add brands to the store, edit the store's
+name, or delete the store. Clicking on a brand takes the user to a list of the
+stores that carry that brand. From this page, the user may add stores to the brand.
 
 ## Setup
 
 * Set up the database in PostgreSQL by running the following commands in your terminal:
 ```
   psql
-  CREATE DATABASE database_name;
-  \c database_name;
-  CREATE TABLE table_name (id serial PRIMARY KEY, attribute varchar);
+  CREATE DATABASE shoe_stores;
+  \c shoe_stores;
+  CREATE TABLE stores (id serial PRIMARY KEY, name varchar);
+  CREATE TABLE brands (id serial PRIMARY KEY, name varchar);
+  CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id int, brand_id int);
 ```
 * If you wish to run tests, create a test database:
 ```
-  CREATE DATABASE database_name_test WITH TEMPLATE database_name;
+  CREATE DATABASE shoe_stores_test WITH TEMPLATE shoe_stores;
 ```
 * Clone this repository.
 * Using the command line, navigate to the top level of the cloned directory.
