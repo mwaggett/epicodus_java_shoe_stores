@@ -132,6 +132,17 @@ public class App {
       return null;
     });
 
+    post("/brands/:brand_id/remove-store/:id", (request, response) -> {
+
+      Brand brand = Brand.find(Integer.parseInt(request.params(":brand_id")));
+      Store removedStore = Store.find(Integer.parseInt(request.params(":id")));
+      brand.removeStore(removedStore);
+
+      String redirectPath = String.format("/brands/%d", brand.getId());
+      response.redirect(redirectPath);
+      return null;
+    });
+
   }
 
 }
