@@ -73,6 +73,15 @@ public class StoreTest {
   }
 
   @Test
+  public void unavailableBrands_returnsNonAddedBrands() {
+    Store myStore = new Store("DSW");
+    myStore.save();
+    Brand myBrand = new Brand("Converse");
+    myBrand.save();
+    assertTrue(myStore.unavailableBrands().contains(myBrand));
+  }
+
+  @Test
   public void removeBrands_removesAddedBrands() {
     Store myStore = new Store("DSW");
     myStore.save();

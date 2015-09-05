@@ -1,5 +1,6 @@
 import org.sql2o.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Store {
 
@@ -91,6 +92,17 @@ public class Store {
           .addParameter("id", id)
           .executeAndFetch(Brand.class);
     }
+  }
+
+  public List<Brand> unavailableBrands() {
+    ArrayList<Brand> unavailableBrands = new ArrayList<Brand>();
+    List<Brand> allBrands = Brand.all();
+    for (Brand brand : allBrands) {
+      if (!this.getBrands().contains(brand)) {
+        unavailableBrands.add(brand);
+      }
+    }
+    return unavailableBrands;
   }
 
   public static List<Store> all() {
