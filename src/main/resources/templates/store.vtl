@@ -9,7 +9,12 @@
       <h3><center>Brands Carried by $store.getName()</center></h3>
       <ul>
         #foreach ($brand in $store.getBrands())
-          <li>$brand.getName()</li>
+          <li>
+            $brand.getName()
+            <form action="/stores/$store.getId()/remove-brand/$brand.getId()" method="post">
+              <button type="submit" class="btn btn-danger">Remove Brand</button>
+            </form>
+          </li>
         #end
         <form action="/stores/$store.getId()/add-brand" method="post">
           <li>

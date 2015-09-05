@@ -65,6 +65,17 @@ public class App {
       return null;
     });
 
+    post("/stores/:store_id/remove-brand/:id", (request, response) -> {
+
+      Store store = Store.find(Integer.parseInt(request.params(":store_id")));
+      Brand removedBrand = Brand.find(Integer.parseInt(request.params(":id")));
+      store.removeBrand(removedBrand);
+
+      String redirectPath = String.format("/stores/%d", store.getId());
+      response.redirect(redirectPath);
+      return null;
+    });
+
     post("/stores/:id/update", (request, response) -> {
 
       Store store = Store.find(Integer.parseInt(request.params(":id")));
