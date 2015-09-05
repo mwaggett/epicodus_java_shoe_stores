@@ -1,0 +1,57 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <h1 class="well"><center>$brand.getName()</center></h1>
+  </div>
+
+  <div class="row">
+    <div class="well">
+      <h3><center>Stores That Carry $brand.getName()</center></h3>
+      <ul>
+        #foreach ($store in $brand.getStores())
+          <li>$store.getName()</li>
+        #end
+        <form action="/brands/$brand.getId()/add-store" method="post">
+          <li>
+            <label>Add a store:</label>
+            <select name="storeId" id="storeId">
+              #foreach ($store in $brand.unavailableStores())
+                <option value="$store.getId()">$store.getName()</option>
+              #end
+            </select>
+            <button type="submit" class="btn btn-info">Add Store</button>
+          </li>
+        </form>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+        <form action="/brands/$brand.getId()/update" method="post">
+          <div class="form-group">
+            <label>Edit Brand Name:</label>
+            <input type="text" name="name" id="name" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-warning">Update Brand</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="well">
+        <form action="/brands/$brand.getId()/delete" method="post">
+          <div class="form-group">
+            <label>Delete Brand</label>
+            <br>
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+  <p><a href="/">Back to Home</a></p>
+
+</div>

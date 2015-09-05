@@ -100,6 +100,27 @@ public class App {
       return null;
     });
 
+    get("/brands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Brand brand = Brand.find(Integer.parseInt(request.params(":id")));
+
+      model.put("brand", brand);
+      model.put("template", "templates/brand.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/brands/:id/add-store", (request, response) -> {
+
+      Brand brand = Brand.find(Integer.parseInt(request.params(":id")));
+      Store addedStore = Store.find(Integer.parseInt(request.queryParams("storeId")));
+      brand.addStore(addedStore);
+
+      String redirectPath = String.format("/brands/%d", brand.getId());
+      response.redirect(redirectPath);
+      return null;
+    });
+
   }
 
 }
