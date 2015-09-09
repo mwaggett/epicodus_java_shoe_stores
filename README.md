@@ -11,7 +11,7 @@ displays lists of stores and brands along with links to add new stores and
 brands. Clicking on a store takes the user to a list of the brands that store
 carries. From this page, the user may add brands to the store, edit the store's
 name, or delete the store. Clicking on a brand takes the user to a list of the
-stores that carry that brand. From this page, the user may add stores to the brand.
+stores that carry that brand. From this page, the user may add stores to the brand. _The Brand class has update and delete methods, but these have not been implemented in the web interface (yet)._
 
 ## Setup
 
